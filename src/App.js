@@ -1,56 +1,20 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Route} from 'react-router-dom';
-import * as BooksAPI from './BooksAPI';
+import Map from './Map';
 import './App.css';
-import BookShelf from './BookShelf';
-import SearchPage from './SearchPage';
 
 /**
-* React Component to Render a BooksApp
+* React Component to Render a MapApp
 * @author [Aron Roberts](https://github.com/robotros)
-* @param {object} book - a book object
-* @param {string} shelf - shelf
 */
-class BooksApp extends React.Component {
-  state = {
-    books: [],
-    screen: '',
-  }
+class MapApp extends React.Component {
+  state = { }
 
   /**
-  * React Method to get book data once component mounts
+  * React Method to get map data once component mounts
   */
-  componentDidMount() {
-    this.getBooksOnShelf();
-  }
-
-  /**
-  * Method to handle a book changing shelves
-  * @param {object} book - book object to move
-  * @param {string} shelf - the name of the shelf
-  * @return {promise} Promise
-  */
-  handleChangeShelf = (book, shelf) => {
-      return new Promise((resolve, reject)=>{
-        BooksAPI.update(book, shelf)
-          .then((response) => {
-            this.getBooksOnShelf();
-          })
-          .then(resolve(true))
-          .catch(reject(Error('Promise Failed')));
-      });
-    };
-
-  /**
-  * Method to get books and update state
-  */
-  getBooksOnShelf() {
-    BooksAPI.getAll().then((data) => {
-      this.setState({books: data});
-    });
-  }
-
+  componentDidMount() { }
 
   /**
   * Render Component into html
@@ -59,40 +23,22 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <Route path='/search'
-          render={()=>(
-            <SearchPage
-              onShelfs={this.state.books}
-              onUpdateShelf={this.handleChangeShelf} />
-          )}
-        />
         <Route exact path='/' render={()=> (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-              <div>
-                <BookShelf
-                  onUpdateShelf={this.handleChangeShelf}
-                  title='Currently Reading'
-                  books={this.state.books.filter((b) => b.shelf === 'currentlyReading')}
-                />
-                <BookShelf
-                  onUpdateShelf={this.handleChangeShelf}
-                  title='Want to Read'
-                  books={this.state.books.filter((b) => b.shelf === 'wantToRead')}
-                />
-                <BookShelf
-                  onUpdateShelf={this.handleChangeShelf}
-                  title='Read'
-                  books={this.state.books.filter((b) => b.shelf === 'read')}
-                />
-              </div>
-            </div>
-            <div className="open-search">
-              <Link to='/search' className='Add-book'>Add a book</Link>
-            </div>
+          <div className="Map-App">
+            <Map
+              id="myMap"
+              options={{
+                center: {lat: 41.0082, lng: 28.9784},
+                zoom: 8,
+              }}
+              onMapLoad={(map) => {
+                let marker = new window.google.maps.Marker({
+                  position: {lat: 41.0082, lng: 28.9784},
+                  map: map,
+                  title: 'Hello Istanbul!',
+                });
+              }}
+            />
           </div>
         )}/>
       </div>
@@ -100,4 +46,4 @@ class BooksApp extends React.Component {
   }
 }
 
-export default BooksApp;
+export default MapApp;
