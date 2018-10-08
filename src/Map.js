@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {render} from 'react-dom';
 
 /**
 * React Component to Render a map using Goolge Map Api
@@ -38,9 +37,10 @@ class Map extends Component {
   componentDidMount() {
     // check if script is already added
     if (!window.google) {
+      const scriptURL = 'https://maps.google.com/maps/api/js?key='+this.state.API_KEY;
       let s = document.createElement('script');
       s.type = 'text/javascript';
-      s.src = 'https://maps.google.com/maps/api/js?key='+this.state.API_KEY;
+      s.src = scriptURL;
       let x = document.getElementsByTagName('script')[0];
       x.parentNode.insertBefore(s, x);
 
