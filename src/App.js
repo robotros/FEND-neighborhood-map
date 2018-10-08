@@ -9,7 +9,12 @@ import './App.css';
 * @author [Aron Roberts](https://github.com/robotros)
 */
 class MapApp extends React.Component {
-  state = { }
+  state = {
+    options: {
+      center: {lat: 41.0082, lng: 28.9784},
+      zoom: 8,
+    },
+  }
 
   /**
   * React Method to get map data once component mounts
@@ -27,10 +32,7 @@ class MapApp extends React.Component {
           <div className="Map-App">
             <Map
               id="myMap"
-              options={{
-                center: {lat: 41.0082, lng: 28.9784},
-                zoom: 8,
-              }}
+              options={this.state.options}
               onMapLoad={(map) => {
                 let marker = new window.google.maps.Marker({
                   position: {lat: 41.0082, lng: 28.9784},
