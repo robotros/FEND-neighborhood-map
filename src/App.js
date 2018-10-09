@@ -2,11 +2,16 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 import ReactDOMServer from 'react-dom/server';
-import * as SocrataAPI from './SocrataAPI';
-import Map from './Map';
-import InforWindow from './InforWindow';
-import './App.css';
+import * as SocrataAPI from './components/SocrataAPI';
+import Map from './components/Map';
+import InforWindow from './components/InforWindow';
+import Hamburger from './components/Hamburger';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faBars} from '@fortawesome/free-solid-svg-icons';
+import './css/App.css';
 
+library.add(faBars);
 /**
 * React Component to Render a MapApp
 * @author [Aron Roberts](https://github.com/robotros)
@@ -14,6 +19,7 @@ import './App.css';
 */
 class MapApp extends React.Component {
   state = {
+    radius: 3000,
     options: {
       center: {lat: 34.052234, lng: -118.243604},
       zoom: 14,
@@ -26,7 +32,7 @@ class MapApp extends React.Component {
   * place markers on the map
   */
   getParksOnMap() {
-    SocrataAPI.getParks(this.state.options.center).then((data) => {
+    SocrataAPI.getParks(this.state.options.center, this.state.radius).then((data) => {
       this.setState({parks: data});
       if (this.state.map) {
         this.dropMarkers(this.state.map);
@@ -93,11 +99,14 @@ class MapApp extends React.Component {
   */
   render() {
     return (
-      <div className="app">
+      <div className='app'>
         <Route exact path='/' render={()=> (
-          <div className="Map-App">
+          <div className='Map-App'>
+            <div className='top'>
+              <Hamburger />
+            </div>
             <Map
-              id="myMap"
+              id='myMap'
               options={this.state.options}
               onMapLoad={this.onMapLoad}
             />
