@@ -15,7 +15,7 @@ class Hamburger extends Component {
   render() {
     return (
       <div className='nav'>
-        <button type='button' className="btn btn-info btn-lg">
+        <button onClick={this.props.toggleNav} type='button' className="btn btn-info btn-lg">
           <FontAwesomeIcon icon="bars" />
         </button>
       </div>

@@ -44,6 +44,14 @@ class MapApp extends React.Component {
   }
 
   /**
+  * toggle Side Nav
+  */
+  toggleNav = () => {
+    document.getElementById('sidenav').classList.toggle('open');
+    document.getElementById('sidenav').classList.toggle('close');
+  }
+
+  /**
   * return marker information
   * @param {string} name : location name for marker
   */
@@ -106,9 +114,9 @@ class MapApp extends React.Component {
         <Route exact path='/' render={()=> (
           <div className='Map-App'>
             <div className='top'>
-              <Hamburger />
+              <Hamburger toggleNav={this.toggleNav}/>
             </div>
-            <div className='sidenav'>
+            <div className='sidenav' id='sidenav'>
               <Shelf
                 locations={this.state.parks}
               />
