@@ -13,12 +13,13 @@ class InforWindow extends Component {
   */
   render() {
     return (
-      <div>{this.props.test}</div>
+      <div>{this.props.details.location_name}</div>
     );
   }
 }
 
 InforWindow.propTypes = {
+  details: PropTypes.object.isRequired,
 };
 
 export default InforWindow;

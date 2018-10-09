@@ -2,7 +2,7 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import ReactDOMServer from 'react-dom/server';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faBars} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faTree, faMapMarked} from '@fortawesome/free-solid-svg-icons';
 //import {Link} from 'react-router-dom';
 //import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import * as SocrataAPI from './components/SocrataAPI';
@@ -13,7 +13,7 @@ import Shelf from './components/Shelf';
 
 import './css/App.css';
 
-library.add(faBars);
+library.add(faBars, faTree, faMapMarked);
 /**
 * React Component to Render a MapApp
 * @author [Aron Roberts](https://github.com/robotros)
@@ -87,9 +87,8 @@ class MapApp extends React.Component {
 
       // create event listeners for markers
       marker.addListener('click', ()=> {
-        this.getParkMarker(marker.title);
-        console.log(this.state.content);
-        infoWindow.setContent(ReactDOMServer.renderToString(<InforWindow test={marker.title}/>));
+        let pin=this.getParkMarker(marker.title);
+        infoWindow.setContent(ReactDOMServer.renderToString(<InforWindow details={park}/>));
         infoWindow.open(map, marker);
       });
     });

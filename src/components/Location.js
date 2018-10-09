@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 
 /**
@@ -13,10 +14,12 @@ class Location extends Component {
   */
   render() {
     const details = this.props.details;
+    console.log(details);
 
     return (
       <div className='location'>
         <div className='location-details'>
+          {details.locationtype==='Parks' ? <FontAwesomeIcon icon='tree' /> : <FontAwesomeIcon icon='map-marked' />}-
           {details.location_name}
         </div>
       </div>
