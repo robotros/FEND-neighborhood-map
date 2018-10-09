@@ -15,7 +15,10 @@ class Hamburger extends Component {
   render() {
     return (
       <div className='nav'>
-        <button onClick={this.props.toggleNav} type='button' className="btn btn-info btn-lg">
+        <button
+          onClick={this.props.toggleNav}
+          type='button'
+          className="btn btn-info btn-lg">
           <FontAwesomeIcon icon="bars" />
         </button>
       </div>
@@ -23,6 +26,11 @@ class Hamburger extends Component {
   }
 }
 
-Map.propTypes = { };
+Hamburger.propTypes = {
+  /**
+  * Function to excute on press of button
+  */
+  toggleNav: PropTypes.func.isRequired,
+};
 
 export default Hamburger;
