@@ -9,6 +9,7 @@ import * as SocrataAPI from './components/SocrataAPI';
 import Map from './components/Map';
 import InforWindow from './components/InforWindow';
 import Hamburger from './components/Hamburger';
+import Shelf from './components/Shelf';
 
 import './css/App.css';
 
@@ -79,7 +80,7 @@ class MapApp extends React.Component {
       // create event listeners for markers
       marker.addListener('click', ()=> {
         this.getParkMarker(marker.title);
-        console.log(this.state.content)
+        console.log(this.state.content);
         infoWindow.setContent(ReactDOMServer.renderToString(<InforWindow test={marker.title}/>));
         infoWindow.open(map, marker);
       });
@@ -106,6 +107,11 @@ class MapApp extends React.Component {
           <div className='Map-App'>
             <div className='top'>
               <Hamburger />
+            </div>
+            <div className='sidenav'>
+              <Shelf
+                locations={this.state.parks}
+              />
             </div>
             <Map
               id='myMap'

@@ -23,6 +23,8 @@ body, .app {
       top: 0px;
       left: 0px;
       overflow: 'hidden';
+      transition: margin-left .5s;
+      padding: 20px;
 }
 
 .Map-App{
@@ -36,6 +38,27 @@ body, .app {
 
 .top{
   background-color: #669999;
+  width: 100%;
 }
+
 .nav{
+}
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 1%;
+    transition: 0.5s;
+}
+
+.location {
+  color:white;
+  border-width: 10px;
+  border-color: #669999;
 }
