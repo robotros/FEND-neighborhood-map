@@ -7,7 +7,7 @@ The functionality of the application is as follows.
 1. A full-screen map using the [Google Maps API](https://cloud.google.com/maps-platform/).
 2. Markers identifing locations of interest.
 3. A list view of the locations that can be filtered
-4. Display additional information for location based on API (Socrata)[https://dev.socrata.com/foundry/data.lacity.org/xyvg-dst2]
+4. Display additional information for location based on API [Socrata](https://dev.socrata.com/foundry/data.lacity.org/xyvg-dst2)
 
 ## QuickStart
 
@@ -21,7 +21,7 @@ The following will be required to run this program
 1. A compatible web browser
 2. Python
 3. Google API key
-4. Socrata (API Key)[https://data.lacity.org/login]
+4. Socrata [API Key](https://data.lacity.org/login)
 
 ## What You're Getting
 ```bash
@@ -48,6 +48,8 @@ The following will be required to run this program
 * Tested with Chrome
 * Dependecies included using CDNS active internet connection required *
 * For specific, detailed description, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/).
+* built using [Google Maps API](https://cloud.google.com/maps-platform/)
+* built using [Socrata API](https://dev.socrata.com/foundry/data.lacity.org/xyvg-dst2)
 
 ## Create React App
 
