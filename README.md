@@ -11,6 +11,7 @@ The functionality of the application is as follows.
 
 ## QuickStart
 
+* the following quick start can be used if you have nodeJS installed
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
@@ -22,7 +23,20 @@ The following will be required to run this program
 2. Python
 3. Google API key
 4. Socrata [API Key](https://data.lacity.org/login)
-
+5. nodeJS 
+6. the follwing packages
+```javascript
+    "ajv": "^6.5.4",
+    "babel-eslint": "^10.0.0",
+    "eslint": "^5.6.0",
+    "eslint-config-google": "^0.10.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-router-dom": "^4.3.1"
+```
 ## What You're Getting
 ```bash
 ├── README.md - This file.
