@@ -25,13 +25,18 @@ The following will be required to run this program
 4. Socrata [API Key](https://data.lacity.org/login)
 5. nodeJS 
 6. the follwing packages
-```javascript
+```xml
+    "@fortawesome/fontawesome-svg-core": "^1.2.5",
+    "@fortawesome/free-solid-svg-icons": "^5.4.0",
+    "@fortawesome/react-fontawesome": "^0.1.3",
     "ajv": "^6.5.4",
     "babel-eslint": "^10.0.0",
     "eslint": "^5.6.0",
     "eslint-config-google": "^0.10.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
+    "install": "^0.12.1",
+    "npm": "^6.4.1",
     "prop-types": "^15.6.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -46,15 +51,23 @@ The following will be required to run this program
 │   ├── favicon.ico # React Icon, You may change if you wish.
 │   └── index.html # DO NOT MODIFY
 └── src
-    ├── App.css # Styles for your app. Feel free to customize this as you desire.
+    ├── components
+    │   ├── Hamburger.js
+    │   ├── InforWindow.js
+    │   ├── Map.js
+    │   ├── SocrataAPI.js
+    │   └──        
+    ├── css
+    │   ├── App.css # Styles for your app. Feel free to customize this as you desire.
+    │   └── index.css # Global styles. You probably won't need to change anything here.
     ├── App.js # This is the root of your app.
     ├── App.test.js # Used for testing. Provided with Create React App.
     ├── icons # Helpful images for your app. Use at your discretion.
     │   ├── add.svg
     │   ├── arrow-back.svg
     │   └── arrow-drop-down.svg
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+    └── index.js # You should not need to modify this file. It is used for DOM rendering
+
 ```
 
 ## Footnotes

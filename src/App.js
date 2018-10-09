@@ -1,14 +1,15 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 import ReactDOMServer from 'react-dom/server';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {faBars} from '@fortawesome/free-solid-svg-icons';
+//import {Link} from 'react-router-dom';
+//import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import * as SocrataAPI from './components/SocrataAPI';
 import Map from './components/Map';
 import InforWindow from './components/InforWindow';
 import Hamburger from './components/Hamburger';
-import {library} from '@fortawesome/fontawesome-svg-core';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBars} from '@fortawesome/free-solid-svg-icons';
+
 import './css/App.css';
 
 library.add(faBars);
@@ -32,12 +33,13 @@ class MapApp extends React.Component {
   * place markers on the map
   */
   getParksOnMap() {
-    SocrataAPI.getParks(this.state.options.center, this.state.radius).then((data) => {
-      this.setState({parks: data});
-      if (this.state.map) {
-        this.dropMarkers(this.state.map);
-      }
-    });
+    SocrataAPI.getParks(this.state.options.center, this.state.radius)
+        .then((data) => {
+          this.setState({parks: data});
+          if (this.state.map) {
+            this.dropMarkers(this.state.map);
+          }
+        });
   }
 
   /**
@@ -46,7 +48,7 @@ class MapApp extends React.Component {
   */
   getParkMarker(name) {
     SocrataAPI.getPark(name).then((data) => {
-      this.setState({content:data});
+      this.setState({content: data});
     });
   }
 
