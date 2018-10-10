@@ -15,6 +15,8 @@ class InforWindow extends Component {
     return (
       <div>
         <h3>{this.props.details.location_name}</h3>
+        <hr/>
+        {this.props.details.locationtype}
         <ul>
           <li>Phone: {this.props.details.phone}</li>
           <li>

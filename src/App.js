@@ -19,7 +19,7 @@ library.add(faBars, faTree, faMapMarked, faWifi, faLeaf, faPaintBrush);
 */
 class MapApp extends React.Component {
   state = {
-    radius: 3000,
+    radius: 3500,
     options: {
       center: {lat: 34.052234, lng: -118.243604},
       zoom: 14,
@@ -27,13 +27,13 @@ class MapApp extends React.Component {
     parks: [],
     infoWindow: '<div class="infoWindow"><div calss="content"></div></div>',
     markers: [],
-    locationType: 'Parks',
+    locationType: '',
   }
 
   /**
   * Make SocrataAPI call to get local parks and place markers on map
   */
-  getParksOnMap() {
+  getPointsOnMap() {
     console.log(this.state.locationType);
     SocrataAPI.getParks(this.state.options.center, this.state.radius, this.state.locationType)
         .then((data) => {
@@ -50,11 +50,11 @@ class MapApp extends React.Component {
   * @param {string} type : location type to retrive markers for
   */
   changeType =(type) =>{
-    console.log(type);
+    type === 'All' ? type = '' : type;
     this.state.markers.forEach((marker)=>{
       marker.marker.setMap(null);
     });
-    this.setState({locationType: type}, ()=>{this.getParksOnMap()});
+    this.setState({locationType: type}, ()=>{this.getPointsOnMap()});
   }
 
   /**
@@ -88,7 +88,7 @@ class MapApp extends React.Component {
   * Run methods once component has mounted
   */
   componentDidMount() {
-    this.getParksOnMap();
+    this.getPointsOnMap();
   }
 
   /**

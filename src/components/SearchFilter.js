@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 */
 class SearchFilter extends Component {
   state = {
-    value: 'Parks',
+    value: 'All',
   }
 
   /**
@@ -34,6 +34,7 @@ class SearchFilter extends Component {
             id="TypeSelect"
             value={this.state.value}
             onChange={this.onChange}>
+            <option value='All'>All</option>
             <option value='Parks'>Parks</option>
             <option value='Museums'>Museums</option>
             <option value='Gardens'>Gardens</option>
