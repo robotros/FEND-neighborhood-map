@@ -2,7 +2,7 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import ReactDOMServer from 'react-dom/server';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faBars, faTree, faMapMarked, faWifi, faLeaf} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faTree, faMapMarked, faWifi, faLeaf, faPaintBrush} from '@fortawesome/free-solid-svg-icons';
 import * as SocrataAPI from './components/SocrataAPI';
 import Map from './components/Map';
 import InforWindow from './components/InforWindow';
@@ -11,7 +11,7 @@ import Shelf from './components/Shelf';
 import './css/App.css';
 
 // font awesome icon library
-library.add(faBars, faTree, faMapMarked, faWifi, faLeaf);
+library.add(faBars, faTree, faMapMarked, faWifi, faLeaf, faPaintBrush);
 
 /**
 * React Component to Render a MapApp

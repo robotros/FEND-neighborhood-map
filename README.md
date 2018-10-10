@@ -23,7 +23,7 @@ The following will be required to run this program
 2. Python
 3. Google API key
 4. Socrata [API Key](https://data.lacity.org/login)
-5. nodeJS 
+5. nodeJS
 6. the follwing packages
 ```xml
     "@fortawesome/fontawesome-svg-core": "^1.2.5",
@@ -58,7 +58,7 @@ The following will be required to run this program
     │   ├── SocrataAPI.js
     │   ├── Location.js
     │   ├── SearchFilter.js
-    │   └── Shelf.js       
+    │   └── Shelf.js
     ├── css
     │   ├── App.css # Styles for your app. Feel free to customize this as you desire.
     │   └── index.css # Global styles. You probably won't need to change anything here.
@@ -79,6 +79,7 @@ The following will be required to run this program
 * For specific, detailed description, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/).
 * built using [Google Maps API](https://cloud.google.com/maps-platform/)
 * built using [Socrata API](https://dev.socrata.com/foundry/data.lacity.org/xyvg-dst2)
+* built using [Font Awesome](https://fontawesome.com/)
 
 ## Create React App
 

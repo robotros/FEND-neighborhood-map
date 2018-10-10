@@ -28,7 +28,8 @@ class Location extends Component {
           <button type='button' className='btn btn-dark list text-left' onClick={this.locClick}>
             {details.locationtype==='Parks' ? <FontAwesomeIcon icon='tree' /> :
               details.locationtype==='Free Wi-Fi Hot Spots' ? <FontAwesomeIcon icon='wifi' /> :
-                details.locationtype==='Gardens' ? <FontAwesomeIcon icon='leaf' /> :<FontAwesomeIcon icon='map-marked' />}-
+                details.locationtype==='Gardens' ? <FontAwesomeIcon icon='leaf' /> :
+                  details.locationtype==='Museums' ? <FontAwesomeIcon icon='paint-brush' /> : <FontAwesomeIcon icon='map-marked' />}-
             {details.location_name}
           </button>
         </div>
@@ -38,9 +39,6 @@ class Location extends Component {
 }
 
 Location.propTypes = {
-  /**
-  * A Location
-  */
   details: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
 };
