@@ -64,6 +64,7 @@ The following will be required to run this program
     │   └── index.css # Global styles. You probably won't need to change anything here.
     ├── App.js # This is the root of your app.
     ├── App.test.js # Used for testing. Provided with Create React App.
+    ├── registerServiceWorker.js # Provided with Create React App.
     ├── icons # Helpful images for your app. Use at your discretion.
     │   ├── add.svg
     │   ├── arrow-back.svg
