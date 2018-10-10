@@ -2,7 +2,7 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import ReactDOMServer from 'react-dom/server';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faBars, faTree, faMapMarked} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faTree, faMapMarked, faWifi, faLeaf} from '@fortawesome/free-solid-svg-icons';
 import * as SocrataAPI from './components/SocrataAPI';
 import Map from './components/Map';
 import InforWindow from './components/InforWindow';
@@ -11,7 +11,7 @@ import Shelf from './components/Shelf';
 import './css/App.css';
 
 // font awesome icon library
-library.add(faBars, faTree, faMapMarked);
+library.add(faBars, faTree, faMapMarked, faWifi, faLeaf);
 
 /**
 * React Component to Render a MapApp
@@ -27,19 +27,34 @@ class MapApp extends React.Component {
     parks: [],
     infoWindow: '<div class="infoWindow"><div calss="content"></div></div>',
     markers: [],
+    locationType: 'Parks',
   }
 
   /**
   * Make SocrataAPI call to get local parks and place markers on map
   */
   getParksOnMap() {
-    SocrataAPI.getParks(this.state.options.center, this.state.radius)
+    console.log(this.state.locationType);
+    SocrataAPI.getParks(this.state.options.center, this.state.radius, this.state.locationType)
         .then((data) => {
-          this.setState({parks: data});
-          if (this.state.map) {
-            this.dropMarkers(this.state.map);
-          }
+          this.setState({parks: data}, () => {
+            if (this.state.map) {
+              this.dropMarkers(this.state.map);
+            }
+          });
         });
+  }
+
+  /**
+  * Change location type
+  * @param {string} type : location type to retrive markers for
+  */
+  changeType =(type) =>{
+    console.log(type);
+    this.state.markers.forEach((marker)=>{
+      marker.marker.setMap(null);
+    });
+    this.setState({locationType: type}, ()=>{this.getParksOnMap()});
   }
 
   /**
@@ -132,6 +147,7 @@ class MapApp extends React.Component {
               <Shelf
                 locations={this.state.parks}
                 onClick={this.clickMarker}
+                onChange={this.changeType}
               />
             </div>
             <Map

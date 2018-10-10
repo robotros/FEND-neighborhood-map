@@ -7,6 +7,20 @@ import PropTypes from 'prop-types';
 * @author [Aron Roberts](https://github.com/robotros)
 */
 class SearchFilter extends Component {
+  state = {
+    value: 'Parks',
+  }
+
+  /**
+  * React Component to Render a Book
+  * @author [Aron Roberts](https://github.com/robotros)
+  * @param {event} event
+  */
+  onChange = (event) => {
+    this.setState({value: event.target.value});
+    this.props.onChange(event.target.value);
+  }
+
   /**
   * Render Component into html
   * @return {Component} html
@@ -15,15 +29,25 @@ class SearchFilter extends Component {
     return (
       <form>
         <div className='form-group'>
-          <input type='text' className='form-control' id='searchBox' placeholder='Search...'>
-          </input>
+          <select
+            className="form-control"
+            id="TypeSelect"
+            value={this.state.value}
+            onChange={this.onChange}>
+            <option value='Parks'>Parks</option>
+            <option value='Museums'>Museums</option>
+            <option value='Gardens'>Gardens</option>
+            <option value='Free+Wi-Fi+Hot+Spots'>Free Wi-Fi Hot Spots</option>
+          </select>
         </div>
       </form>
     );
   }
 }
 
-SearchFilter.propTypes = {};
+SearchFilter.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
 
 
 export default SearchFilter;

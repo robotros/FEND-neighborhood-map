@@ -5,8 +5,8 @@ const api = 'https://data.lacity.org/resource/xyvg-dst2.json';
 let token = '6R2aVyEytig0yKcvBpsD8nXoe';
 let autho = '$$app_token='+token;
 
-export const getParks = (center, radius) =>
-  fetch(`${api}?locationtype=Parks&$where=within_circle(city,${center.lat},${center.lng},${radius})&${autho}`)
+export const getParks = (center, radius, type) =>
+  fetch(`${api}?locationtype=${type}&$where=within_circle(city,${center.lat},${center.lng},${radius})&${autho}`)
       .then((res) => res.json());
 
 export const getPark = (name) =>

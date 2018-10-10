@@ -19,7 +19,7 @@ class Shelf extends Component {
 
     return (
       <div className='shelf'>
-        <SearchFilter />
+        <SearchFilter onChange={this.props.onChange}/>
         <div className='shelf-locations'>
           <ul className='locations-list'>
             {shelf.locations.map((location, index) => (
@@ -40,6 +40,7 @@ class Shelf extends Component {
 Shelf.propTypes = {
   locations: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Shelf;
