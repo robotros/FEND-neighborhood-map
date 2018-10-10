@@ -13,7 +13,17 @@ class InforWindow extends Component {
   */
   render() {
     return (
-      <div>{this.props.details.location_name}</div>
+      <div>
+        <h3>{this.props.details.location_name}</h3>
+        <ul>
+          <li>Phone: {this.props.details.phone}</li>
+          <li>
+            <a href={this.props.details.website}>
+              {this.props.details.website}
+            </a>
+          </li>
+        </ul>
+      </div>
     );
   }
 }

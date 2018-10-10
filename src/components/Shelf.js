@@ -21,15 +21,16 @@ class Shelf extends Component {
       <div className='shelf'>
         <SearchFilter />
         <div className='shelf-locations'>
-          <ol className='locations-list'>
+          <ul className='locations-list'>
             {shelf.locations.map((location, index) => (
               <li key={index}>
                 <Location
+                  onClick={this.props.onClick}
                   details={location}
                 />
               </li>))
             }
-          </ol>
+          </ul>
         </div>
       </div>
     );
@@ -38,6 +39,7 @@ class Shelf extends Component {
 
 Shelf.propTypes = {
   locations: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Shelf;

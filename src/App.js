@@ -3,21 +3,19 @@ import {Route} from 'react-router-dom';
 import ReactDOMServer from 'react-dom/server';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faBars, faTree, faMapMarked} from '@fortawesome/free-solid-svg-icons';
-//import {Link} from 'react-router-dom';
-//import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import * as SocrataAPI from './components/SocrataAPI';
 import Map from './components/Map';
 import InforWindow from './components/InforWindow';
 import Hamburger from './components/Hamburger';
 import Shelf from './components/Shelf';
-
 import './css/App.css';
 
+// font awesome icon library
 library.add(faBars, faTree, faMapMarked);
+
 /**
 * React Component to Render a MapApp
 * @author [Aron Roberts](https://github.com/robotros)
-* @param {componet} map : React Component to render Map
 */
 class MapApp extends React.Component {
   state = {
@@ -28,10 +26,11 @@ class MapApp extends React.Component {
     },
     parks: [],
     infoWindow: '<div class="infoWindow"><div calss="content"></div></div>',
+    markers: [],
   }
 
   /**
-  * place markers on the map
+  * Make SocrataAPI call to get local parks and place markers on map
   */
   getParksOnMap() {
     SocrataAPI.getParks(this.state.options.center, this.state.radius)
@@ -41,6 +40,15 @@ class MapApp extends React.Component {
             this.dropMarkers(this.state.map);
           }
         });
+  }
+
+  /**
+  * simulate a marker click
+  * @param {string} locName : Marker Title to be clicked
+  */
+  clickMarker = (locName) => {
+    let marker = this.state.markers.filter((m) => m.name === locName);
+    window.google.maps.event.trigger(marker[0].marker, 'click');
   }
 
   /**
@@ -73,6 +81,7 @@ class MapApp extends React.Component {
   * @param {object} map google map object that pin should be dropped on
   */
   dropMarkers = (map) => {
+    let markerList =[];
     let infoWindow = new window.google.maps.InfoWindow({
       content:this.state.infoWindow,
     });
@@ -87,11 +96,15 @@ class MapApp extends React.Component {
 
       // create event listeners for markers
       marker.addListener('click', ()=> {
-        let pin=this.getParkMarker(marker.title);
         infoWindow.setContent(ReactDOMServer.renderToString(<InforWindow details={park}/>));
+        marker.setAnimation(4);
         infoWindow.open(map, marker);
       });
+
+      markerList.push({name: marker.title, marker: marker});
     });
+
+    this.setState({markers: markerList});
   }
 
   /**
@@ -118,6 +131,7 @@ class MapApp extends React.Component {
             <div className='sidenav' id='sidenav'>
               <Shelf
                 locations={this.state.parks}
+                onClick={this.clickMarker}
               />
             </div>
             <Map

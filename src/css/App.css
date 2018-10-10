@@ -9,7 +9,9 @@ body {
 body, .app {
   background: white;
 }
-
+h3{
+  color:#669999;
+}
 /* main page */
 
 /**
@@ -58,9 +60,7 @@ body, .app {
 }
 
 .open{
-  width: 350px;
-
-  padding: 1%;
+  width: 375px;
 }
 
 .close{
@@ -70,7 +70,16 @@ body, .app {
 
 .location {
   color:white;
-  border-width: 10px;
-  border-color: #669999;
 
+}
+.list{
+  width:90%;
+  left: 0;
+  border:solid;
+  margin:1px;
+  white-space:initial;
+}
+
+.locations-list{
+  list-style: none;
 }
