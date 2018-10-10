@@ -21,9 +21,9 @@ class Shelf extends Component {
       <div className='shelf'>
         <SearchFilter onChange={this.props.onChange}/>
         <div className='shelf-locations'>
-          <ul className='locations-list'>
+          <ul role='menu' className='locations-list'>
             {shelf.locations.map((location, index) => (
-              <li key={index}>
+              <li role='none' key={index}>
                 <Location
                   onClick={this.props.onClick}
                   details={location}

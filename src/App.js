@@ -137,7 +137,7 @@ class MapApp extends React.Component {
   */
   render() {
     return (
-      <div className='app'>
+      <main className='app'>
         <Route exact path='/' render={()=> (
           <div className='Map-App'>
             <div className='top'>
@@ -157,7 +157,7 @@ class MapApp extends React.Component {
             />
           </div>
         )}/>
-      </div>
+      </main>
     );
   }
 }

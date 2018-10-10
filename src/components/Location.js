@@ -25,7 +25,7 @@ class Location extends Component {
     return (
       <div className='location'>
         <div className='location-details'>
-          <button type='button' className='btn btn-dark list text-left' onClick={this.locClick}>
+          <button role='menuitem' type='button' className='btn btn-dark list text-left' onClick={this.locClick}>
             {details.locationtype==='Parks' ? <FontAwesomeIcon icon='tree' /> :
               details.locationtype==='Free Wi-Fi Hot Spots' ? <FontAwesomeIcon icon='wifi' /> :
                 details.locationtype==='Gardens' ? <FontAwesomeIcon icon='leaf' /> :

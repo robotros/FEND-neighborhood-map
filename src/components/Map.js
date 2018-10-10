@@ -54,13 +54,20 @@ class Map extends Component {
   }
 
   /**
+  * function to handle authentication error with google api
+  */
+  gm_authFailure() {
+    window.alert('Google Maps error');
+  }
+
+  /**
   * render function for map component
   * @author [Aron Roberts](https://github.com/robotros)
   * @return {JSX} return HTML code to render
   */
   render() {
     return (
-      <div id={this.props.id}></div>
+      <div role='application' id={this.props.id}></div>
     );
   }
 }
