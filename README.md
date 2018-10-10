@@ -56,7 +56,9 @@ The following will be required to run this program
     │   ├── InforWindow.js
     │   ├── Map.js
     │   ├── SocrataAPI.js
-    │   └──        
+    │   ├── Location.js
+    │   ├── SearchFilter.js
+    │   └── Shelf.js       
     ├── css
     │   ├── App.css # Styles for your app. Feel free to customize this as you desire.
     │   └── index.css # Global styles. You probably won't need to change anything here.
