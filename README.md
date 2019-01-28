@@ -81,7 +81,7 @@ The following will be required to run this program
 * built using [Google Maps API](https://cloud.google.com/maps-platform/)
 * built using [Socrata API](https://dev.socrata.com/foundry/data.lacity.org/xyvg-dst2)
 * built using [Font Awesome](https://fontawesome.com/)
-* Live version deployed at [https://FendReactMap.aronroberts.com]
+* Live version deployed at [AronRoberts.com](http://FendReactMap.aronroberts.com)
 
 ## Create React App
 
